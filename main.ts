@@ -1,71 +1,14 @@
-basic.forever(function () {
-    if (input.isGesture(Gesture.LogoUp)) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            `)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . # . .
-            `)
-    } else if (input.isGesture(Gesture.LogoDown)) {
-        basic.showLeds(`
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-        basic.showLeds(`
-            . . # . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-    } else if (input.isGesture(Gesture.TiltLeft)) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . # . . .
-            . . . . .
-            . . . . .
-            `)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            # . . . .
-            . . . . .
-            . . . . .
-            `)
-    } else if (input.isGesture(Gesture.TiltRight)) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . # .
-            . . . . .
-            . . . . .
-            `)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . #
-            . . . . .
-            . . . . .
-            `)
-    } else {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-    }
+input.onGesture(Gesture.TiltRight, function () {
+    Kugel.change(LedSpriteProperty.X, 1)
 })
+input.onGesture(Gesture.LogoUp, function () {
+    Kugel.change(LedSpriteProperty.Y, 1)
+})
+input.onGesture(Gesture.TiltLeft, function () {
+    Kugel.change(LedSpriteProperty.X, -1)
+})
+input.onGesture(Gesture.LogoDown, function () {
+    Kugel.change(LedSpriteProperty.Y, -1)
+})
+let Kugel: game.LedSprite = null
+Kugel = game.createSprite(2, 2)
